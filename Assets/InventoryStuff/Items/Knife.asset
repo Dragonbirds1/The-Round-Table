@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c0b357a80da1b4c99f4e9ef8d48d72, type: 3}
   m_Name: Knife
   m_EditorClassIdentifier: 
+  sprite: {fileID: -4010286203845184573, guid: f3cbc48ff00c48d49ade65de1e141323, type: 3}
+  description: 
