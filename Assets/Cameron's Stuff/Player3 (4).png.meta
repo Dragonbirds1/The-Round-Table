@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8a51bab38e50ecc419654d93a8362a8f
+guid: da4aee5a471d9014c89324715015228f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8104603502426724848
-    second: New Piskel (5) (4)_0
+      213: 1095264569843665209
+    second: Player3 (4)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,7 +126,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: New Piskel (5) (4)_0
+      name: Player3 (4)_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0f9188702f5597070800000000000000
-      internalID: 8104603502426724848
+      spriteID: 9394a94c259233f00800000000000000
+      internalID: 1095264569843665209
       vertices: []
       indices: 
       edges: []
@@ -151,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: e78415784fbd70d42907ed06d2a202fa
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      New Piskel (5) (4)_0: 8104603502426724848
+      Player3 (4)_0: 1095264569843665209
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
