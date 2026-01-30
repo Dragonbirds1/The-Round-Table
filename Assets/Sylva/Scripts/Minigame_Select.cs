@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Minigame_Select : MonoBehaviour
 {
+
     [SerializeField] private List<string> minigameList = new();
     [SerializeField] private string mainScene;
 
