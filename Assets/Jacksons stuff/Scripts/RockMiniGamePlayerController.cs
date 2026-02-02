@@ -6,7 +6,7 @@ public class RockMiniGamePlayerController : MonoBehaviour
 {
 
     float horizontalInput;
-    float moveSpeed = 10f;
+    public float moveSpeed = 10f;
 
     Rigidbody2D rb;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
