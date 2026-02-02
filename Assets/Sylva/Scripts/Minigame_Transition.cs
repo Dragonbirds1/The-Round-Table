@@ -34,7 +34,7 @@ public class Minigame_Transition : MonoBehaviour
     {
         if (moving)
         {
-            if (Vector2.Distance(target.position, transform.position) > 1f && !hitEndPoint)
+            if (Vector2.Distance(target.position, transform.position) > 5f && !hitEndPoint)
             {
                 hitEndPoint = false;
                 Vector2 direction = (target.position - transform.position).normalized;

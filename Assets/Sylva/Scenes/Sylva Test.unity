@@ -453,10 +453,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1854307197}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000061035156, y: 489}
-  m_SizeDelta: {x: 960, y: 488}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 1083}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1838091559
 MonoBehaviour:
@@ -473,7 +473,7 @@ MonoBehaviour:
   rb: {fileID: 1838091560}
   endPoint: {fileID: 1469134048}
   levelManager: {fileID: 1445477832}
-  moveSpeed: 500
+  moveSpeed: 600
   hitEndPoint: 0
 --- !u!50 &1838091560
 Rigidbody2D:
@@ -726,7 +726,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -302.84784, y: -165.29367}
+  m_AnchoredPosition: {x: -777, y: -457}
   m_SizeDelta: {x: 354.3043, y: 157.4127}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1953737876
