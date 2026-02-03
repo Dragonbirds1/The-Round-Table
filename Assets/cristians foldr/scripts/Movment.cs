@@ -6,12 +6,13 @@ using UnityEngine.UI;
 
 public class Movment : MonoBehaviour
 {
+    
     public float speed = 20f;
     private Rigidbody2D rb;
     private Vector2 input;
 
     public Text WINTEXT;
-
+   
 
     public void Start()
     {
