@@ -3,8 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    
-
+    public Movment Movment;
+    public float takenvalue;
+    public void Update()
+    {
+        takenvalue = Movment.speed;
+        
+    }
     public void gameSelect()
     {
         SceneManager.LoadScene(1);
