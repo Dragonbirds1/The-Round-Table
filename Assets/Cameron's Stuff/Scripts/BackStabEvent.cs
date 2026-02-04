@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using TMPro;
 
 public class BackStabEvent : MonoBehaviour
 {
@@ -13,9 +14,15 @@ public class BackStabEvent : MonoBehaviour
     public GameObject currentLight, lampLight1, lampLight2, lampLight3;
     public GameObject targetLight;
     public GameObject wol;
+    public GameObject StabberText;
+    public TextMeshProUGUI textMeshProUGUI;
     public KeyCode backStabKey;
     public float timerForStab;
     bool StartTimer1 = false;
+    public string player1Stab;
+    public string player2Stab;
+    public string player3Stab;
+    public string player4Stab;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -47,6 +54,7 @@ public class BackStabEvent : MonoBehaviour
             lampLight2.SetActive(false);
             lampLight3.SetActive(false);
             targetLight.SetActive(true);
+            Random.Range(1, 4);
             wol.SetActive(false);
             StartTimer1 = true;
         }
