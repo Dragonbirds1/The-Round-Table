@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 3678985460518781687}
   - component: {fileID: 7867773656764341339}
   - component: {fileID: 6943822343922140263}
-  - component: {fileID: 5965213819373175771}
   - component: {fileID: 1397858629227485811}
+  - component: {fileID: 5965213819373175771}
   m_Layer: 0
   m_Name: TEST PLAYER
   m_TagString: Untagged
@@ -117,20 +117,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &5965213819373175771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7068789256840903878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8b0bcca84f69b34a8a79b40d63e6915, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 20
-  WINTEXT: {fileID: 0}
 --- !u!70 &1397858629227485811
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -168,3 +154,17 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 1}
   m_Direction: 0
+--- !u!114 &5965213819373175771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7068789256840903878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8b0bcca84f69b34a8a79b40d63e6915, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 20
+  WINTEXT: {fileID: 0}
