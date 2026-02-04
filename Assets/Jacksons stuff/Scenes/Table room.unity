@@ -216,6 +216,7 @@ GameObject:
   m_Component:
   - component: {fileID: 73879432}
   - component: {fileID: 73879433}
+  - component: {fileID: 73879434}
   m_Layer: 0
   m_Name: Wheel
   m_TagString: Untagged
@@ -297,6 +298,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &73879434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73879431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4931876237acd3140b889b3bbe5d318e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spinPart: {fileID: 73879432}
+  players: []
 --- !u!1 &80305403
 GameObject:
   m_ObjectHideFlags: 0
@@ -2721,7 +2736,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1664661280}
-  - component: {fileID: 1664661279}
   m_Layer: 0
   m_Name: PunishmentWheel
   m_TagString: Untagged
@@ -2729,35 +2743,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1664661279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1664661278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4931876237acd3140b889b3bbe5d318e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spinPart: {fileID: 73879432}
-  spinKey: 330
-  velocity: {x: 0, y: 0}
-  spinAcceleration: 10
-  wheelRadius: 1.01
-  friction: 5
-  X: 0
-  Y: 0
-  radToSpinWheel: 0
-  canSpin: 0
-  spinPlayer1: 331
-  spinPlayer2: 351
-  spinPlayer3: 371
-  spinPlayer4: 391
-  assignPlayer: {fileID: 2082840411}
-  controllersConnected: 0
-  winnerChoice: {fileID: 272933665}
 --- !u!4 &1664661280
 Transform:
   m_ObjectHideFlags: 0
@@ -3480,7 +3465,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1664661279}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Wheel, Assembly-CSharp
         m_MethodName: AddControler
         m_Mode: 5

@@ -1,107 +1,102 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.InputSystem;
-using Unity.VisualScripting;
 
 public class Wheel : MonoBehaviour
 {
-    /// <summary>
-    /// This script will handle the wheel's spin and results.
-    /// </summary>
-
-    [Header("Wheel Settings")]
     public Transform spinPart;
-    public KeyCode spinKey;
-    bool currentlySpinning = false;
-    public Vector2 velocity;
-    public float spinAcceleration;
-    public float wheelRadius;
-    public float friction;
-    public float X;
-    public float Y;
-    public float radToSpinWheel;
-    bool startSpinning = false;
-    public bool canSpin = false;
-    public KeyCode spinPlayer1, spinPlayer2, spinPlayer3, spinPlayer4;
-    public AssignPlayer assignPlayer;
-    public int controllersConnected;
+    public List<PlayerInput> players = new List<PlayerInput>();
 
-    private float currentSpinSpeed;
+    private bool spinning;
 
-    [Header ("Scripts")]
-    public WinnerChoice winnerChoice;
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(spinPlayer1))
+        if (spinning) return;
+
+        if (Keyboard.current.spaceKey.wasPressedThisFrame || AnyGamepadPressed())
         {
-            Debug.Log("Player1");
-            return;
-        }
-        if (Input.GetButton("Spin2"))
-        {
-            Debug.Log("Player2");
-            return;
-        }
-        if (Input.GetKey(spinPlayer3))
-        {
-            Debug.Log("Player3");
-            return;
-        }
-        if (Input.GetKey(spinPlayer4))
-        {
-            Debug.Log("Player4");
-            return;
-        }
-        if (canSpin == true)
-        {
-            if (startSpinning == true)
+            if (players.Count == 0)
             {
-                X += Time.deltaTime;
-                if (X >= 5)
-                {
-                    currentlySpinning = true;
-                    startSpinning = false;
-                }
+                Debug.Log("No players!");
+                return;
             }
-            spinPart.Rotate(0f, 0f, X);
-            if (Input.GetKeyDown(spinKey) && currentlySpinning == false)
-            {
-                startSpinning = true;
-            }
-            if (currentlySpinning == true)
-            {
-                if (X > 0f)
-                {
-                    X -= Time.deltaTime;
-                }
-                else if (X <= 0f)
-                {
-                    X = 0f;
-                }
-            }
+
+            int winner = Random.Range(0, players.Count);
+            StartCoroutine(SpinToWinner(winner));
         }
     }
 
-    public void AddControler()
+    bool AnyGamepadPressed()
     {
-        controllersConnected += 1;
+        foreach (var pad in Gamepad.all)
+        {
+            if (pad.buttonSouth.wasPressedThisFrame)
+                return true;
+        }
+        return false;
     }
 
-    private void OnDrawGizmosSelected()
+    IEnumerator SpinToWinner(int winnerIndex)
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, wheelRadius);
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere (transform.position, radToSpinWheel);
+        spinning = true;
+
+        int playerCount = players.Count;
+
+        float sliceSize = 360f / playerCount;
+
+        // Aim for the CENTER of the slice
+        float targetAngle = (winnerIndex * sliceSize) + (sliceSize / 2f);
+
+        // Add dramatic spins
+        float totalSpin = 360f * Random.Range(5, 8) + targetAngle;
+
+        float duration = 5f;
+        float timer = 0f;
+
+        float startRot = spinPart.eulerAngles.z;
+        float endRot = startRot - totalSpin;
+
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+
+            float t = timer / duration;
+
+            // Casino easing
+            t = 1 - Mathf.Pow(1 - t, 4);
+
+            float rot = Mathf.Lerp(startRot, endRot, t);
+            spinPart.rotation = Quaternion.Euler(0, 0, rot);
+
+            yield return null;
+        }
+
+        spinPart.rotation = Quaternion.Euler(0, 0, endRot);
+
+        Debug.Log("WINNER: Player " + winnerIndex);
+
+        StartCoroutine(SpinPlayer(players[winnerIndex].transform));
+
+        spinning = false;
+    }
+
+    IEnumerator SpinPlayer(Transform player)
+    {
+        float duration = 0.6f;
+        float timer = 0f;
+
+        float startRot = player.eulerAngles.z;
+        float endRot = startRot + 720f;
+
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+
+            float rot = Mathf.Lerp(startRot, endRot, timer / duration);
+            player.rotation = Quaternion.Euler(0, 0, rot);
+
+            yield return null;
+        }
     }
 }

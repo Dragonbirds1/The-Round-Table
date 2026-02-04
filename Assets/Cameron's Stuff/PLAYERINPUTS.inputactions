@@ -126,6 +126,118 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Player1",
+            "id": "7ad81acf-3d0c-42e9-92e0-66ae7035e33c",
+            "actions": [
+                {
+                    "name": "Spin",
+                    "type": "Button",
+                    "id": "0a9a1412-e772-4200-ad50-c0504c65221e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "389a8dce-4feb-41a1-99c2-0bab286b9bde",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Spin",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Player2",
+            "id": "5ed37975-8e45-4827-a5aa-ecae867fe558",
+            "actions": [
+                {
+                    "name": "Spin",
+                    "type": "Button",
+                    "id": "2b1e082a-24cd-4933-89af-84bc91a4b620",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "d3670249-af41-426e-a2b1-11b487902916",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Spin",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Player3",
+            "id": "f43efc75-1d37-4378-8665-c2ccbf93ef82",
+            "actions": [
+                {
+                    "name": "Spin",
+                    "type": "Button",
+                    "id": "37c9ff18-670b-4e0a-851c-7705545a3a7b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "713a11a6-1ed3-4fec-a11f-8cfeab4da54f",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Spin",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Player4",
+            "id": "a8a3f9f1-528a-42bf-a073-0fcc825731b8",
+            "actions": [
+                {
+                    "name": "Spin",
+                    "type": "Button",
+                    "id": "45d1b27d-a6d7-45c4-9b25-44229b154815",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "afbfeb9f-a0b8-46e5-bf5f-8b1e7af6fd08",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Spin",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
