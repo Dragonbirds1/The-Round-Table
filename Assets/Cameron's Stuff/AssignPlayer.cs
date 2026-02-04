@@ -12,8 +12,11 @@ public class AssignPlayer : MonoBehaviour
 
     public void Assign(PlayerInput input)
     {
-        input.GetComponent<Animator>().runtimeAnimatorController = baseAnim[input.playerIndex];
+        input.GetComponent<Animator>().runtimeAnimatorController =
+            baseAnim[input.playerIndex];
+
         input.transform.position = position[input.playerIndex];
-        //input.DeactivateInput();
+
+        FindFirstObjectByType<Wheel>().players.Add(input);
     }
 }

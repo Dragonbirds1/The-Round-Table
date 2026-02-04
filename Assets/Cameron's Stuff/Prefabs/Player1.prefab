@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1545127867848190649}
   - component: {fileID: 779690338258227517}
   - component: {fileID: 5795139646682607704}
+  - component: {fileID: 6168332832650403739}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -172,6 +173,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 6689ba40-bf3e-491b-81d4-ffeb0c3914f9
     m_ActionName: 'Movement/Spin[/XInputControllerWindows/buttonWest,/XInputControllerWindows1/buttonWest,/XInputControllerWindows2/buttonWest]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0a9a1412-e772-4200-ad50-c0504c65221e
+    m_ActionName: 'Player1/Spin[/XInputControllerWindows/buttonWest,/XInputControllerWindows1/buttonWest,/XInputControllerWindows2/buttonWest]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2b1e082a-24cd-4933-89af-84bc91a4b620
+    m_ActionName: 'Player2/Spin[/XInputControllerWindows/buttonWest,/XInputControllerWindows1/buttonWest,/XInputControllerWindows2/buttonWest]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 37c9ff18-670b-4e0a-851c-7705545a3a7b
+    m_ActionName: 'Player3/Spin[/XInputControllerWindows/buttonWest,/XInputControllerWindows1/buttonWest,/XInputControllerWindows2/buttonWest]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 45d1b27d-a6d7-45c4-9b25-44229b154815
+    m_ActionName: 'Player4/Spin[/XInputControllerWindows/buttonWest,/XInputControllerWindows1/buttonWest,/XInputControllerWindows2/buttonWest]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Movement
@@ -204,3 +221,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &6168332832650403739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1860744983346994781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d57bd53fd557e6d46828c6ef19393f6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
