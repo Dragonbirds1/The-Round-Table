@@ -8,18 +8,27 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
+  - enabled: 0
     path: Assets/Sylva/Scenes/Sylva Test.unity
     guid: 145041ea162b0374099466daf2c79841
-  - enabled: 1
+  - enabled: 0
     path: Assets/Sylva/Scenes/Testing Scenes/test1.unity
     guid: b93232136c88dfe4ba8fc425e1ab6072
-  - enabled: 1
+  - enabled: 0
     path: Assets/Sylva/Scenes/Testing Scenes/test2.unity
     guid: 98502cb7149f6654ebfc2ceb2e983653
-  - enabled: 1
+  - enabled: 0
     path: Assets/Sylva/Scenes/Testing Scenes/test3.unity
     guid: bd2719aa95a41884eb530b2f7701aec2
+  - enabled: 1
+    path: Assets/cristians foldr/Main cristian.unity
+    guid: cd41060409f9d31448a9001a91075285
+  - enabled: 1
+    path: Assets/cristians foldr/testing scene.unity
+    guid: 391d9e861dcb89145ba780ae5a459105
+  - enabled: 1
+    path: Assets/cristians foldr/testing scene 2.unity
+    guid: 53b38508d1981cf49818160cddb5931a
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 7667cd40305d4a54f8aa28688f428dd9, type: 2}
   m_UseUCBPForAssetBundles: 0
