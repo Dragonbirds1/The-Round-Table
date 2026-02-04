@@ -1,6 +1,8 @@
-using UnityEngine;
-using UnityEngine.Rendering.Universal;
+using System.Collections.Generic;
 using TMPro;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.Rendering.Universal;
 
 public class BackStabEvent : MonoBehaviour
 {
@@ -12,21 +14,27 @@ public class BackStabEvent : MonoBehaviour
 
     [Header("Settings")]
     public GameObject currentLight, lampLight1, lampLight2, lampLight3;
-    public GameObject targetLight;
+    public GameObject targetLight, blackoutLight;
     public GameObject wol;
     public GameObject StabberText;
     public TextMeshProUGUI textMeshProUGUI;
     public KeyCode backStabKey;
     public float timerForStab;
+    public float timeTillStart;
+    public bool random;
     bool StartTimer1 = false;
     public string player1Stab;
     public string player2Stab;
     public string player3Stab;
     public string player4Stab;
+    public List<PlayerInput> players = new List<PlayerInput>();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         targetLight.SetActive(false);
+        blackoutLight.SetActive(false);
+        random = true;
+        StabberText.SetActive(false);
     }
 
     // Update is called once per frame
@@ -45,10 +53,37 @@ public class BackStabEvent : MonoBehaviour
                 targetLight.SetActive(false);
                 wol.SetActive(true);
                 StartTimer1 = false;
+                random = true;
+                StabberText.SetActive(false);
             }
         }
         if (Input.GetKeyDown(backStabKey))
         {
+            StabberText.SetActive(true);
+            if (random == true)
+            {
+                int winner = Random.Range(0, players.Count);
+                if (winner == 0)
+                {
+                    textMeshProUGUI.text = player1Stab;
+                    random = false;
+                }
+                if (winner == 1)
+                {
+                    textMeshProUGUI.text = player2Stab;
+                    random = false;
+                }
+                if (winner == 2)
+                {
+                    textMeshProUGUI.text = player3Stab;
+                    random = false;
+                }
+                if (winner == 3)
+                {
+                    textMeshProUGUI.text = player4Stab;
+                    random = false;
+                }
+            }
             currentLight.SetActive(false);
             lampLight1.SetActive(false);
             lampLight2.SetActive(false);

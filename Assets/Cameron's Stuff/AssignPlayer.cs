@@ -18,5 +18,7 @@ public class AssignPlayer : MonoBehaviour
         input.transform.position = position[input.playerIndex];
 
         FindFirstObjectByType<Wheel>().players.Add(input);
+        
+        FindFirstObjectByType<BackStabEvent>().players.Add(input);
     }
 }

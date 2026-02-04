@@ -56,6 +56,7 @@ public class Wheel : MonoBehaviour
 
         float startRot = spinPart.eulerAngles.z;
         float endRot = startRot - totalSpin;
+        Debug.Log("WINNER: Player " + winnerIndex);
 
         while (timer < duration)
         {
@@ -73,8 +74,6 @@ public class Wheel : MonoBehaviour
         }
 
         spinPart.rotation = Quaternion.Euler(0, 0, endRot);
-
-        Debug.Log("WINNER: Player " + winnerIndex);
 
         StartCoroutine(SpinPlayer(players[winnerIndex].transform));
 
