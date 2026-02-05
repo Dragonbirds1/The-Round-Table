@@ -4,6 +4,7 @@ using UnityEditor.U2D.Aseprite;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
 
 public class AssignPlayer : MonoBehaviour
 {
@@ -20,5 +21,7 @@ public class AssignPlayer : MonoBehaviour
         FindFirstObjectByType<Wheel>().players.Add(input);
         
         FindFirstObjectByType<BackStabEvent>().players.Add(input);
+
+        FindFirstObjectByType<Turns>().players.Add(input);
     }
 }

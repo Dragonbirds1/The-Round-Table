@@ -38,7 +38,6 @@ public class BackStabEvent : MonoBehaviour
         targetLight.SetActive(false);
         blackoutLight.SetActive(false);
         random = true;
-        start = true;
         StabberText.SetActive(false);
     }
 
@@ -61,7 +60,6 @@ public class BackStabEvent : MonoBehaviour
                 StartTimer1 = false;
                 random = true;
                 StabberText.SetActive(false);
-                start = true;
             }
         }
         if (StartTimer2 == true)
@@ -108,7 +106,7 @@ public class BackStabEvent : MonoBehaviour
                 StartTimer2 = false;
             }
         }
-        if (Input.GetKeyDown(backStabKey) && start == true)
+        if (start == true)
         {
             StartTimer2 = true;
             wol.SetActive(false);

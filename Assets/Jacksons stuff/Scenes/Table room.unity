@@ -1930,6 +1930,58 @@ RectTransform:
   m_AnchoredPosition: {x: 497.5, y: 253}
   m_SizeDelta: {x: 995, y: 506}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1231708094
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1231708096}
+  - component: {fileID: 1231708095}
+  m_Layer: 0
+  m_Name: TurnManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1231708095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231708094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 904b5855289ba314088950b2bc98a590, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backStabEvent: {fileID: 80305404}
+  players: []
+  testKey: 0
+  turn1: 0
+  turn2: 0
+  turn3: 0
+  turn4: 0
+  COS: 0
+--- !u!4 &1231708096
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231708094}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.5114802, y: -1.1915536, z: -0.019078841}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1288138003
 GameObject:
   m_ObjectHideFlags: 0
@@ -3797,18 +3849,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Wheel, Assembly-CSharp
-        m_MethodName: AddControler
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   m_PlayerLeftEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -3864,3 +3904,4 @@ SceneRoots:
   - {fileID: 80305405}
   - {fileID: 1689580856}
   - {fileID: 1562246659}
+  - {fileID: 1231708096}
