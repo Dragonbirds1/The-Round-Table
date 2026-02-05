@@ -27,7 +27,10 @@ public class BackStabEvent : MonoBehaviour
     public string player1Stab;
     public string player2Stab;
     public string player3Stab;
+    public bool start;
     public string player4Stab;
+    public AudioSource music;
+    public AudioClip musicClip, lightsOut;
     public List<PlayerInput> players = new List<PlayerInput>();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -35,6 +38,7 @@ public class BackStabEvent : MonoBehaviour
         targetLight.SetActive(false);
         blackoutLight.SetActive(false);
         random = true;
+        start = true;
         StabberText.SetActive(false);
     }
 
@@ -46,7 +50,8 @@ public class BackStabEvent : MonoBehaviour
             timerForStab -= Time.deltaTime;
             if (timerForStab <= 0)
             {
-                timerForStab = 30f;
+                music.PlayOneShot(lightsOut, 2);
+                timerForStab = 32f;
                 currentLight.SetActive(true);
                 lampLight1.SetActive(true);
                 lampLight2.SetActive(true);
@@ -56,13 +61,20 @@ public class BackStabEvent : MonoBehaviour
                 StartTimer1 = false;
                 random = true;
                 StabberText.SetActive(false);
+                start = true;
             }
         }
         if (StartTimer2 == true)
         {
+            blackoutLight.SetActive(true);
+            currentLight.SetActive(false);
+            lampLight1.SetActive(false);
+            lampLight2.SetActive(false);
+            lampLight3.SetActive(false);
             timeTillStart -= Time.deltaTime;
             if (timeTillStart <= 0)
             {
+                music.PlayOneShot(musicClip, 0.5f);
                 timeTillStart = 2f;
                 StabberText.SetActive(true);
                 if (random == true)
@@ -89,22 +101,19 @@ public class BackStabEvent : MonoBehaviour
                         random = false;
                     }
                 }
-                currentLight.SetActive(false);
-                lampLight1.SetActive(false);
-                lampLight2.SetActive(false);
-                lampLight3.SetActive(false);
                 blackoutLight.SetActive(false);
                 targetLight.SetActive(true);
                 Random.Range(1, 4);
-                wol.SetActive(false);
                 StartTimer1 = true;
                 StartTimer2 = false;
             }
         }
-        if (Input.GetKeyDown(backStabKey))
+        if (Input.GetKeyDown(backStabKey) && start == true)
         {
-            blackoutLight.SetActive(true);
             StartTimer2 = true;
+            wol.SetActive(false);
+            music.PlayOneShot(lightsOut, 2);
+            start = false;
         }
     }
 }
