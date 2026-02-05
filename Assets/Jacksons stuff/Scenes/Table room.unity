@@ -346,13 +346,13 @@ MonoBehaviour:
   lampLight2: {fileID: 1941304837}
   lampLight3: {fileID: 1634834570}
   targetLight: {fileID: 494116210}
-  blackoutLight: {fileID: 0}
+  blackoutLight: {fileID: 112924572}
   wol: {fileID: 1389764784}
   StabberText: {fileID: 339409411}
   textMeshProUGUI: {fileID: 339409413}
   backStabKey: 9
   timerForStab: 30
-  timeTillStart: 0
+  timeTillStart: 2
   random: 0
   player1Stab: Choose someone to stab player 1
   player2Stab: Choose someone to stab player 2
