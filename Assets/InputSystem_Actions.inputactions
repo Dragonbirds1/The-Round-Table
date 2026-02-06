@@ -113,6 +113,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "InventoryToggle",
+                    "type": "Button",
+                    "id": "f41d2b7b-c1e8-4889-b5b3-5865bdfdc263",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -371,6 +380,7 @@
                 },
                 {
                     "name": "",
+<<<<<<< HEAD
                     "id": "c0f9b4af-79ab-4840-8c37-d86cedf5d76a",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
@@ -410,6 +420,25 @@
                     "processors": "",
                     "groups": ";Gamepad4",
                     "action": "Player4Move",
+=======
+                    "id": "21ce6682-720a-4991-8ca2-8042005938c7",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "InventoryToggle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ae1622bf-a3da-4054-9c7b-2ea1c861ff35",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "InventoryToggle",
+>>>>>>> cb6a128f3eed350cff4d2debc33872930f1c07ac
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
