@@ -47,7 +47,7 @@ public class Bomb_Manager : MonoBehaviour
             }
         }
     }
-
+    //ends the minigame
     public void EndBomb()
     {
         if (bombObject != null)
