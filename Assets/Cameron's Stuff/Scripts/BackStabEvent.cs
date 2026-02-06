@@ -17,6 +17,7 @@ public class BackStabEvent : MonoBehaviour
 
     [Header("Audio")]
     public AudioSource music;
+    public AudioSource mainMusic1, mainMusic2;
     public AudioClip musicClip, lightsOut;
 
     [Header("Timers")]
@@ -68,6 +69,8 @@ public class BackStabEvent : MonoBehaviour
             StartTimer2 = true;
             wol.SetActive(false);
             music.PlayOneShot(lightsOut, 2);
+            mainMusic1.enabled = false;
+            mainMusic2.enabled = false;
 
             start = false;
         }
@@ -251,6 +254,8 @@ public class BackStabEvent : MonoBehaviour
     void ResetEvent()
     {
         music.PlayOneShot(lightsOut, 2);
+        mainMusic1.enabled = true;
+        mainMusic2.enabled = true;
 
         timerForStab = 32f;
 

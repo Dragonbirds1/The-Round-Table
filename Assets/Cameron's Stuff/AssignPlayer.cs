@@ -23,5 +23,7 @@ public class AssignPlayer : MonoBehaviour
         FindFirstObjectByType<BackStabEvent>().players.Add(input);
 
         FindFirstObjectByType<Turns>().players.Add(input);
+        
+        input.DeactivateInput();
     }
 }
