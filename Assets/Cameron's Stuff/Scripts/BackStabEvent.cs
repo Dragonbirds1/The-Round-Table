@@ -41,6 +41,9 @@ public class BackStabEvent : MonoBehaviour
 
     public bool start;
     public bool stabbing;
+    public string winner2;
+
+    public int winner;
 
     // ⭐ The chosen attacker
     private PlayerInput stabber;
@@ -55,6 +58,7 @@ public class BackStabEvent : MonoBehaviour
 
         mainCam = Camera.main;
         camStartPos = mainCam.transform.position;
+        winner = Random.Range(0, players.Count);
     }
 
     //------------------------------------------------
@@ -64,6 +68,7 @@ public class BackStabEvent : MonoBehaviour
         //--------------------------------
         // EVENT START
         //--------------------------------
+        
         if (start)
         {
             StartTimer2 = true;
@@ -138,8 +143,6 @@ public class BackStabEvent : MonoBehaviour
         if (!random || players.Count == 0) return;
 
         if (players.Count == 0) return;
-
-        int winner = Random.Range(0, players.Count);
 
         stabber = players[winner];
 
@@ -253,6 +256,8 @@ public class BackStabEvent : MonoBehaviour
 
     void ResetEvent()
     {
+        winner = Random.Range(0, players.Count);
+
         music.PlayOneShot(lightsOut, 2);
         mainMusic1.enabled = true;
         mainMusic2.enabled = true;
