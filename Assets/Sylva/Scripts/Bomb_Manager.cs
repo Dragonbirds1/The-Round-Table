@@ -30,7 +30,6 @@ public class Bomb_Manager : MonoBehaviour
     //preferably use this after a timer so the players can get ready for the minigame
     public void StartBomb()
     {
-        
         Trigger(playerList[Random.Range(0, playerList.Count)]);
         startBomb = true;
     }
@@ -55,5 +54,19 @@ public class Bomb_Manager : MonoBehaviour
             Destroy(bombObject);
         }
         startBomb = false;
+    }
+
+    //this is for testing purposes
+
+    public void Switch()
+    {
+        if (taggedPlayer == playerList[0])
+        {
+            Trigger(playerList[1]);
+        }
+        else
+        {
+            Trigger(playerList[0]);
+        }
     }
 }
