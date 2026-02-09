@@ -13,8 +13,13 @@ public class AssignPlayer : MonoBehaviour
 
     public void Assign(PlayerInput input)
     {
-        input.GetComponent<Animator>().runtimeAnimatorController =
-            baseAnim[input.playerIndex];
+        Animator anim = input.GetComponent<Animator>();
+
+        if (anim != null)
+        {
+            anim.runtimeAnimatorController = baseAnim[input.playerIndex];
+        }
+
 
         input.transform.position = position[input.playerIndex];
 
@@ -23,7 +28,8 @@ public class AssignPlayer : MonoBehaviour
         FindFirstObjectByType<BackStabEvent>().players.Add(input);
 
         FindFirstObjectByType<Turns>().players.Add(input);
-        
+
+
         input.DeactivateInput();
     }
 }

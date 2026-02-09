@@ -28,6 +28,14 @@ public class Turns : MonoBehaviour
 
     }
 
+    public PlayerInput GetCurrentPlayer()
+    {
+        if (players == null || players.Count == 0)
+            return null;
+
+        return players[currentTurn];
+    }
+
     IEnumerator TurnDelay()
     {
         yield return new WaitForSeconds(0.25f);

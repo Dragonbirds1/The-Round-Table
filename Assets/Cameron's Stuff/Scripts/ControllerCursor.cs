@@ -1,31 +1,38 @@
 using UnityEngine;
-using UnityEngine.EventSystems; // For UI interaction
-using UnityEngine.InputSystem; // Required for the new Input System
-using UnityEngine.InputSystem.Controls;
+using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 using System.Collections.Generic;
 
-/// <summary>
-/// Moves a cursor using a gamepad or keyboard and allows UI interaction.
-/// Attach this to a GameObject with a RectTransform (e.g., an Image) inside a Canvas.
-/// </summary>
+[RequireComponent(typeof(PlayerInput))]
 public class ControllerCursor : MonoBehaviour
 {
-    [Header("Cursor Settings")]
-    public float moveSpeed = 800f; // Pixels per second
-    public RectTransform canvasRect; // Reference to the parent Canvas RectTransform
+    public float moveSpeed = 800f;
+    public RectTransform canvasRect;
 
-    public List<PlayerInput> players = new List<PlayerInput>();
-    private int currentplayers = 0;
-
-    [Header("Input Actions")]
-    public InputAction moveAction; // Vector2 input for movement
-    public InputAction clickAction; // Button input for clicking
-
-    public RectTransform[] images; // Assign 4 UI images
-    public InputActionProperty[] leftSticks; // Assign 4 actions
-
-    public RectTransform cursorRect;
+    private RectTransform cursorRect;
     private Camera uiCamera;
+
+    private PlayerInput playerInput;
+    private InputAction moveAction;
+    private InputAction clickAction;
+
+    //------------------------------------------------
+
+    private void Awake()
+    {
+        playerInput = GetComponent<PlayerInput>();
+
+        // These MUST match your Input Actions asset
+        moveAction = playerInput.actions["Move"];
+        clickAction = playerInput.actions["Click"];
+
+        cursorRect = GetComponent<RectTransform>();
+
+        Canvas canvas = canvasRect.GetComponent<Canvas>();
+        uiCamera = canvas.renderMode == RenderMode.ScreenSpaceOverlay
+            ? null
+            : canvas.worldCamera;
+    }
 
     private void OnEnable()
     {
@@ -39,17 +46,7 @@ public class ControllerCursor : MonoBehaviour
         clickAction.Disable();
     }
 
-    private void Start()
-    {
-        cursorRect = GetComponent<RectTransform>();
-
-        // Get the camera rendering the UI
-        Canvas canvas = canvasRect.GetComponent<Canvas>();
-        uiCamera = canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : canvas.worldCamera;
-
-        // Start cursor in center
-        cursorRect.anchoredPosition = Vector2.zero;
-    }
+    //------------------------------------------------
 
     private void Update()
     {
@@ -57,45 +54,48 @@ public class ControllerCursor : MonoBehaviour
         HandleClick();
     }
 
-    bool Pressed(PlayerInput player)
-    {
-        var device = player.devices[0];
-
-        if (device is Gamepad pad)
-            return pad.rightStick.ReadValue() != Vector2.zero;
-
-        if (device is Keyboard keyboard)
-            return keyboard.spaceKey.wasPressedThisFrame;
-
-        return false;
-    }
+    //------------------------------------------------
 
     private void MoveCursor()
     {
-        for (int i = 0; i < 1; i++)
-        {
-            Vector2 move = leftSticks[i].action.ReadValue<Vector2>();
-            images[i].anchoredPosition += move * moveSpeed * Time.deltaTime;
-        }
+        Vector2 moveInput = moveAction.ReadValue<Vector2>();
+
+        Vector2 newPos =
+            cursorRect.anchoredPosition +
+            moveInput * moveSpeed * Time.deltaTime;
+
+        Vector2 canvasSize = canvasRect.sizeDelta;
+
+        newPos.x = Mathf.Clamp(newPos.x, -canvasSize.x / 2, canvasSize.x / 2);
+        newPos.y = Mathf.Clamp(newPos.y, -canvasSize.y / 2, canvasSize.y / 2);
+
+        cursorRect.anchoredPosition = newPos;
     }
+
+    //------------------------------------------------
 
     private void HandleClick()
     {
-        if (clickAction.WasPressedThisFrame())
-        {
-            // Simulate a UI click at the cursor position
-            PointerEventData pointerData = new PointerEventData(EventSystem.current)
+        if (!clickAction.WasPressedThisFrame())
+            return;
+
+        PointerEventData pointerData =
+            new PointerEventData(EventSystem.current)
             {
-                position = RectTransformUtility.WorldToScreenPoint(uiCamera, cursorRect.position)
+                position = RectTransformUtility.WorldToScreenPoint(
+                    uiCamera,
+                    cursorRect.position)
             };
 
-            var results = new System.Collections.Generic.List<RaycastResult>();
-            EventSystem.current.RaycastAll(pointerData, results);
+        var results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerData, results);
 
-            foreach (var result in results)
-            {
-                ExecuteEvents.Execute(result.gameObject, pointerData, ExecuteEvents.pointerClickHandler);
-            }
+        foreach (var result in results)
+        {
+            ExecuteEvents.Execute(
+                result.gameObject,
+                pointerData,
+                ExecuteEvents.pointerClickHandler);
         }
     }
 }
