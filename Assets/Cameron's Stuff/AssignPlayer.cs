@@ -1,12 +1,11 @@
 using Unity.VisualScripting;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 
 public class AssignPlayer : MonoBehaviour
 {
-    public AnimatorController[] baseAnim;
+    public RuntimeAnimatorController[] baseAnim;
     public Vector3[] position;
 
     public void Assign(PlayerInput input)
