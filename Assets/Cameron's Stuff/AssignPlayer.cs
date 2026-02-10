@@ -1,7 +1,5 @@
 using Unity.VisualScripting;
 using UnityEditor.Animations;
-using UnityEditor.U2D.Aseprite;
-using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
