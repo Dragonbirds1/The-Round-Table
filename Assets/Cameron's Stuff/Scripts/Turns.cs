@@ -15,14 +15,18 @@ public class Turns : MonoBehaviour
 
     private int eventChance;
 
+    public Animator switchBlade;
+
     public GameObject itemBar;
 
     public TextMeshProUGUI currentPlayerText;
     public TextMeshProUGUI gogglesDisplay;
 
-    public bool turnSwitch, item;
+    public bool turnSwitch, item, ready;
 
-    public string player1, player2, player3, player4;
+    public float stabReady = 0.096f;
+
+    public string player1, player2, player3, player4, view1, view2, view3, view4;
 
     private void Start()
     {
@@ -63,6 +67,25 @@ public class Turns : MonoBehaviour
             StartCoroutine(TurnDelay());
         }
 
+        if (ready == true) 
+        { 
+            stabReady -= Time.deltaTime;
+            if (stabReady <= 0f)
+            {
+                backStabEvent.winner = activePlayer.playerIndex;
+                itemBar.SetActive(false);
+                backStabEvent.start = true;
+                stabReady = 0.096f;
+                ready = false;
+                turnSwitch = true;
+                currentTurn++;
+                if (currentTurn >= players.Count)
+                {
+                    currentTurn = 0;
+                }
+            }
+        }
+
     }
 
     public PlayerInput GetCurrentPlayer()
@@ -84,27 +107,26 @@ public class Turns : MonoBehaviour
         var device = player.devices[0];
 
         if (device is Gamepad pad)
-            if (pad.buttonWest.wasPressedThisFrame && item == false)
+            if (pad.buttonWest.wasPressedThisFrame && item == false && backStabEvent.stabbing == false)
             {
                 turnSwitch = true;
                 return pad.buttonWest.wasPressedThisFrame;
             }
 
-            else if (pad.buttonEast.wasPressedThisFrame && item == false)
+            else if (pad.buttonEast.wasPressedThisFrame && item == false && backStabEvent.stabbing == false)
             {
                 itemBar.SetActive(true);
                 turnSwitch = false;
                 item = true;
             }
-            else if (pad.buttonWest.wasPressedThisFrame && item == true)
+            else if (pad.buttonWest.wasPressedThisFrame && item == true && backStabEvent.stabbing == false)
             {
                 Debug.Log("Used SwitchBlade!");
-                itemBar.SetActive(false);
-                turnSwitch = true;
+                switchBlade.SetBool("Stab", true);
                 item = false;
-                return pad.buttonWest.wasPressedThisFrame;
+                ready = true;
             }
-            else if (pad.buttonSouth.wasPressedThisFrame && item == true)
+            else if (pad.buttonSouth.wasPressedThisFrame && item == true && backStabEvent.stabbing == false)
             {
                 Debug.Log("Used Vial Of Lavander!");
                 itemBar.SetActive(false);
@@ -112,10 +134,25 @@ public class Turns : MonoBehaviour
                 item = false;
                 return pad.buttonSouth.wasPressedThisFrame;
             }
-            else if (pad.buttonEast.wasPressedThisFrame && item == true)
+            else if (pad.buttonEast.wasPressedThisFrame && item == true && backStabEvent.stabbing == false)
             {
                 Debug.Log("Used Goggles!");
-                gogglesDisplay.text = "Player: " + backStabEvent.winner;
+                if (backStabEvent.winner == 0)
+                {
+                    gogglesDisplay.text = "Stabber will be: " + view1;
+                }
+                else if (backStabEvent.winner == 1)
+                {
+                    gogglesDisplay.text = "Stabber will be: " + view2;
+                }
+                else if (backStabEvent.winner == 2)
+                {
+                    gogglesDisplay.text = "Stabber will be: " + view3;
+                }
+                else if (backStabEvent.winner == 3)
+                {
+                    gogglesDisplay.text = "Stabber will be: " + view4;
+                }
                 itemBar.SetActive(false);
                 turnSwitch = true;
                 item = false;

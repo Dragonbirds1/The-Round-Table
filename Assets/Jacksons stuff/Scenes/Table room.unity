@@ -3201,15 +3201,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backStabEvent: {fileID: 80305404}
   players: []
+  switchBlade: {fileID: 1613749402}
   itemBar: {fileID: 1617519175}
   currentPlayerText: {fileID: 1167221357}
   gogglesDisplay: {fileID: 375475634}
   turnSwitch: 0
   item: 0
+  ready: 0
+  stabReady: 0.096
   player1: 'Player 1:'
   player2: 'Player 2:'
   player3: 'Player 3:'
   player4: 'Player 4:'
+  view1: Player 1
+  view2: Player 2
+  view3: Player 3
+  view4: Player 4
 --- !u!4 &1231708096
 Transform:
   m_ObjectHideFlags: 0
@@ -4384,6 +4391,7 @@ GameObject:
   - component: {fileID: 1613749399}
   - component: {fileID: 1613749401}
   - component: {fileID: 1613749400}
+  - component: {fileID: 1613749402}
   m_Layer: 5
   m_Name: Image (1)
   m_TagString: Untagged
@@ -4448,6 +4456,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1613749398}
   m_CullTransparentMesh: 1
+--- !u!95 &1613749402
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613749398}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fdc5c7aa3dddbf54daf759b0651bf001, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1617519175
 GameObject:
   m_ObjectHideFlags: 0

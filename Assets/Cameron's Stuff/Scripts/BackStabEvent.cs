@@ -240,6 +240,8 @@ public class BackStabEvent : MonoBehaviour
             pad.SetMotorSpeeds(1f, 1f);
             yield return new WaitForSeconds(0.2f);
             pad.SetMotorSpeeds(0, 0);
+            music.Stop();
+            ResetEvent();
         }
 
         //--------------------------------
