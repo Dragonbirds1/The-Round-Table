@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 779690338258227517}
   - component: {fileID: 5795139646682607704}
   - component: {fileID: 6168332832650403739}
+  - component: {fileID: 5181733552105882823}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -189,6 +190,34 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 45d1b27d-a6d7-45c4-9b25-44229b154815
     m_ActionName: 'Player4/Spin[/XInputControllerWindows/buttonWest,/XInputControllerWindows1/buttonWest,/XInputControllerWindows2/buttonWest]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c320e322-e357-4584-a2a2-cc76a6fa47cc
+    m_ActionName: 'Movement/LeftStick1[/XInputControllerWindows/rightStick,/XInputControllerWindows1/rightStick,/XInputControllerWindows2/rightStick,/XInputControllerWindows3/rightStick]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ec750e2d-807a-46de-a9dc-3344202f0091
+    m_ActionName: 'Movement/LeftStick2[/XInputControllerWindows/rightStick,/XInputControllerWindows1/rightStick,/XInputControllerWindows2/rightStick,/XInputControllerWindows3/rightStick]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 369a6eea-d110-466f-8f45-18cd3db57e40
+    m_ActionName: 'Movement/LeftStick3[/XInputControllerWindows/rightStick,/XInputControllerWindows1/rightStick,/XInputControllerWindows2/rightStick,/XInputControllerWindows3/rightStick]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fb346ed7-a87f-45dc-a24c-2f11751b1e59
+    m_ActionName: 'Movement/LeftStick4[/XInputControllerWindows/rightStick,/XInputControllerWindows1/rightStick,/XInputControllerWindows2/rightStick,/XInputControllerWindows3/rightStick]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a27504cb-8d4b-425b-a9b8-26cf40ccc57a
+    m_ActionName: 'Movement/Click[/XInputControllerWindows/rightTrigger,/XInputControllerWindows1/rightTrigger,/XInputControllerWindows2/rightTrigger,/XInputControllerWindows3/rightTrigger]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8740e1a6-8b8d-4b52-a3f0-eed1b219ad8e
+    m_ActionName: 'UI/Move[/XInputControllerWindows/rightStick,/XInputControllerWindows1/rightStick,/XInputControllerWindows2/rightStick,/XInputControllerWindows3/rightStick]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6d12a79d-a8bb-493c-a9b7-25a597ef476a
+    m_ActionName: 'UI/Click[/XInputControllerWindows/rightTrigger,/XInputControllerWindows1/rightTrigger,/XInputControllerWindows2/rightTrigger,/XInputControllerWindows3/rightTrigger]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Movement
@@ -233,3 +262,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d57bd53fd557e6d46828c6ef19393f6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5181733552105882823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1860744983346994781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_Priority: 26
+  m_ComponentVersion: 5
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_AlphaCutoff: 0.46
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -0.33321455, y: -0.6356173, z: 0}
+  - {x: -0.3161483, y: 0.38713518, z: 0}
+  - {x: -0.47205645, y: 0.39076096, z: 0}
+  - {x: -0.4684307, y: 0.46327636, z: 0}
+  - {x: -0.19543523, y: 0.47245765, z: 0}
+  - {x: -0.18562056, y: 0.6481907, z: 0}
+  - {x: 0.18783382, y: 0.6445649, z: 0}
+  - {x: 0.19906102, y: 0.4652061, z: 0}
+  - {x: 0.49965015, y: 0.45965058, z: 0}
+  - {x: 0.49965015, y: 0.38713518, z: 0}
+  - {x: 0.3183616, y: 0.37988362, z: 0}
+  - {x: 0.31145996, y: -0.6356173, z: 0}
+  - {x: 0.09718961, y: -0.63533235, z: 0}
+  - {x: 0.093563795, y: -0.10596973, z: 0}
+  - {x: -0.0804732, y: -0.10596973, z: 0}
+  - {x: -0.0949763, y: -0.6425838, z: 0}
+  m_ShapePathHash: 1958870432
+  m_InstanceId: 0
+  m_ShadowShape2DComponent: {fileID: 0}
+  m_ShadowShape2DProvider:
+    rid: -2
+  m_ShadowCastingSource: 1
+  m_ShadowMesh:
+    m_Mesh: {fileID: 0}
+    m_LocalBounds:
+      m_Center: {x: 0.013796866, y: 0.0028034449, z: 0}
+      m_Extent: {x: 0.4858533, y: 0.64538723, z: 0}
+    m_EdgeProcessing: 1
+    m_TrimEdge: 0
+    m_FlipX: 0
+    m_FlipY: 0
+    m_InitialTrim: 0
+  m_CastingOption: 1
+  m_PreviousTrimEdge: 0
+  m_PreviousEdgeProcessing: 1
+  m_PreviousShadowCastingSource: 1
+  m_PreviousShadowShape2DSource: {fileID: 1417069422805732159}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
