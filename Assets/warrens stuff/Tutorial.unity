@@ -1137,12 +1137,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'BACK-STAB: after every player finishes their turn, their is a 20% chance
-    that all the lights go out. During this time, a random player will recieve the
+  m_text: 'BACK-STAB: After every player finishes their turn, there is a 20% chance
+    that all the lights go out. During this time, a random player will receive the
     ''switchblade'' item. When a player gets this item, they have the choice to either
     put it down, or stab another player in the back. Stabing another player will
-    place a curse on that player, if the player with the curse loses a chalange then
-    they die and are disqualifyed for the rest of the game.'
+    place a curse on that player, if the player with the curse loses the following
+    challenge then they die and are disqualified for the rest of the game.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2b2050880a1cb9947851fca80261f31a, type: 2}
   m_sharedMaterial: {fileID: 8924914901765063051, guid: 2b2050880a1cb9947851fca80261f31a, type: 2}
@@ -2097,7 +2097,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'WHEEL OF PUNISHMINT: after every mini-game, the wheel will spin and, the
+  m_text: 'WHEEL OF PUNISHMENT: after every mini-game, the wheel will spin and, the
     losing players will get a punishment depending on what the wheel lands on. If
     the wheel lands on ( ! ! 2 ), then 2 players will receve a punishment level of
     2. And if the wheel lands on ( ! ! ! ! 1 ), then one player will receve a punishment
@@ -2512,6 +2512,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1604975054}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1538424457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2667,7 +2679,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1604975055
 Transform:
   m_ObjectHideFlags: 0
@@ -2701,7 +2713,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1797239450
 Transform:
   m_ObjectHideFlags: 0

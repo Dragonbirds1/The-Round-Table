@@ -35,10 +35,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Jacksons stuff/Scenes/Rock falling.unity
     guid: 163564a3f8f7ca7408ccdccc34c64f68
-  - enabled: 0
+  - enabled: 1
     path: Assets/warrens stuff/Warren.unity
     guid: 0bcddfc825b9cde44b595138839cefa7
-  - enabled: 0
+  - enabled: 1
     path: Assets/warrens stuff/Tutorial.unity
     guid: 63773571bd52fd24dbf81c8a345794d8
   m_configObjects:
