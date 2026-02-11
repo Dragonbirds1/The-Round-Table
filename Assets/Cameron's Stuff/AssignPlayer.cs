@@ -7,6 +7,7 @@ public class AssignPlayer : MonoBehaviour
 {
     public RuntimeAnimatorController[] baseAnim;
     public Vector3[] position;
+    public Teleport teleport;
 
     public void Assign(PlayerInput input)
     {
@@ -17,16 +18,23 @@ public class AssignPlayer : MonoBehaviour
             anim.runtimeAnimatorController = baseAnim[input.playerIndex];
         }
 
-
         input.transform.position = position[input.playerIndex];
 
-        FindFirstObjectByType<Wheel>().players.Add(input);
-        
-        FindFirstObjectByType<BackStabEvent>().players.Add(input);
+        //------------------------------------------------
+        // REGISTER PLAYER (ONE MASTER LIST)
+        //------------------------------------------------
 
-        FindFirstObjectByType<Turns>().players.Add(input);
+        MainGameManager.Instance.RegisterPlayer(input);
 
+        //------------------------------------------------
+        // OPTIONAL — Start turns once players join
+        //------------------------------------------------
+
+        MainGameManager.Instance.ChangeState(MainGameManager.GameState.Turns);
+
+        //------------------------------------------------
 
         input.DeactivateInput();
     }
+
 }

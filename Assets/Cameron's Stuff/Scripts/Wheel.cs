@@ -6,49 +6,36 @@ using System.Collections.Generic;
 public class Wheel : MonoBehaviour
 {
     public Transform spinPart;
-    public List<PlayerInput> players = new List<PlayerInput>();
 
     private bool spinning;
 
-    void Update()
+    //------------------------------------------------
+    // CALL THIS FROM THE MINIGAME
+    //------------------------------------------------
+
+    public void SpinForPlayer(PlayerInput winner)
     {
         if (spinning) return;
 
-        if (Keyboard.current.spaceKey.wasPressedThisFrame || AnyGamepadPressed())
-        {
-            if (players.Count == 0)
-            {
-                Debug.Log("No players!");
-                return;
-            }
-
-            int winner = Random.Range(0, players.Count);
-            StartCoroutine(SpinToWinner(winner));
-        }
+        StartCoroutine(SpinRoutine(winner));
     }
 
-    bool AnyGamepadPressed()
-    {
-        foreach (var pad in Gamepad.all)
-        {
-            if (pad.buttonSouth.wasPressedThisFrame)
-                return true;
-        }
-        return false;
-    }
+    //------------------------------------------------
 
-    IEnumerator SpinToWinner(int winnerIndex)
+    IEnumerator SpinRoutine(PlayerInput winner)
     {
         spinning = true;
 
-        int playerCount = players.Count;
+        //------------------------------------------------
+        // Pick a RESULT instead of a player
+        //------------------------------------------------
 
-        float sliceSize = 360f / playerCount;
+        int resultIndex = Random.Range(0, 4);
 
-        // Aim for the CENTER of the slice
-        float targetAngle = (winnerIndex * sliceSize) + (sliceSize / 2f);
+        float sliceSize = 360f / 4f;
 
-        // Add dramatic spins
+        float targetAngle = (resultIndex * sliceSize) + (sliceSize / 2f);
+
         float totalSpin = 360f * Random.Range(5, 8) + targetAngle;
 
         float duration = 5f;
@@ -56,7 +43,6 @@ public class Wheel : MonoBehaviour
 
         float startRot = spinPart.eulerAngles.z;
         float endRot = startRot - totalSpin;
-        Debug.Log("WINNER: Player " + winnerIndex);
 
         while (timer < duration)
         {
@@ -75,27 +61,41 @@ public class Wheel : MonoBehaviour
 
         spinPart.rotation = Quaternion.Euler(0, 0, endRot);
 
-        StartCoroutine(SpinPlayer(players[winnerIndex].transform));
+        Debug.Log("RESULT INDEX: " + resultIndex);
+
+        //------------------------------------------------
+        // Apply the result
+        //------------------------------------------------
+
+        ApplyWheelResult(resultIndex, winner);
 
         spinning = false;
     }
 
-    IEnumerator SpinPlayer(Transform player)
+    //------------------------------------------------
+    // RESULTS
+    //------------------------------------------------
+
+    void ApplyWheelResult(int result, PlayerInput winner)
     {
-        float duration = 0.6f;
-        float timer = 0f;
-
-        float startRot = player.eulerAngles.z;
-        float endRot = startRot + 720f;
-
-        while (timer < duration)
+        switch (result)
         {
-            timer += Time.deltaTime;
+            case 0:
+                Debug.Log("WINNER GETS +1 ITEM!");
+                break;
 
-            float rot = Mathf.Lerp(startRot, endRot, timer / duration);
-            player.rotation = Quaternion.Euler(0, 0, rot);
+            case 1:
+                Debug.Log("WINNER BECOMES THE STABBER!");
+                FindFirstObjectByType<BackStabEvent>().ForceStabber(winner);
+                break;
 
-            yield return null;
+            case 2:
+                Debug.Log("WINNER GETS +2 ITEMS!");
+                break;
+
+            case 3:
+                Debug.Log("NOTHING HAPPENS!");
+                break;
         }
     }
 }
