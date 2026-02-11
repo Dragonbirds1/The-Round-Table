@@ -86,7 +86,7 @@ public class Wheel : MonoBehaviour
 
             case 1:
                 Debug.Log("WINNER BECOMES THE STABBER!");
-                FindFirstObjectByType<BackStabEvent>().ForceStabber(winner);
+                //FindFirstObjectByType<BackStabEvent>().ForceStabber(winner);
                 break;
 
             case 2:

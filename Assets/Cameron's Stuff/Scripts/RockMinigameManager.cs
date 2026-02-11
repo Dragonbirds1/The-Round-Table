@@ -6,13 +6,15 @@ public class RockMinigameManager : MonoBehaviour
 {
     public List<PlayerInput> players = new List<PlayerInput>();
 
-    private List<PlayerInput> alivePlayers = new List<PlayerInput>();
+    public List<PlayerInput> alivePlayers = new List<PlayerInput>();
 
     [Header("Teleport")]
     public Transform[] originalPositions;
 
     [Header("Wheel")]
     public Wheel wheel;
+
+    public GameObject backgroundCh, groundCh, ChCam, NCam;
 
     //------------------------------------------------
 
@@ -53,6 +55,7 @@ public class RockMinigameManager : MonoBehaviour
 
         if (alivePlayers.Count == 1)
         {
+
             DeclareWinner(alivePlayers[0]);
         }
     }
@@ -70,6 +73,11 @@ public class RockMinigameManager : MonoBehaviour
         for (int i = 0; i < players.Count; i++)
         {
             players[i].gameObject.SetActive(true);
+
+            backgroundCh.SetActive(false);
+            groundCh.SetActive(false);
+            ChCam.SetActive(false);
+            NCam.SetActive(true);
 
             players[i].transform.position =
                 originalPositions[players[i].playerIndex].position;

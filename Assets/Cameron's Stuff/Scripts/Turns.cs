@@ -82,6 +82,26 @@ public class Turns : MonoBehaviour
 
         PlayerInput activePlayer = players[currentTurn];
 
+        if (ready == true)
+        {
+            stabReady -= Time.deltaTime;
+            if (stabReady <= 0f)
+            {
+                backStabEvent.winner = activePlayer.playerIndex;
+                itemBar.SetActive(false);
+                backStabEvent.start = true;
+                stabReady = 0.096f;
+                ready = false;
+                turnSwitch = true;
+                currentTurn++;
+                BuildSeatOrder();
+                if (currentTurn >= players.Count)
+                {
+                    currentTurn = 0;
+                }
+            }
+        }
+
         itemBarSB1.text = currentSBP1.ToString();
         itemBarSB2.text = currentSBP2.ToString();
         itemBarSB3.text = currentSBP3.ToString();
@@ -136,6 +156,18 @@ public class Turns : MonoBehaviour
             itemBarG2.enabled = false;
             itemBarG3.enabled = false;
             itemBarG4.enabled = false;
+            sb1 = false;
+            sb2 = false;
+            sb3 = false;
+            sb4 = false;
+            vol1 = false;
+            vol2 = false;
+            vol3 = false;
+            vol4 = false;
+            g1 = false;
+            g2 = false;
+            g3 = false;
+            g4 = false;
 
             currentPlayerText.text = player1;
             if (currentSBP1 > 0)
@@ -179,6 +211,18 @@ public class Turns : MonoBehaviour
             itemBarG2.enabled = true;
             itemBarG3.enabled = false;
             itemBarG4.enabled = false;
+            sb1 = false;
+            sb2 = false;
+            sb3 = false;
+            sb4 = false;
+            vol1 = false;
+            vol2 = false;
+            vol3 = false;
+            vol4 = false;
+            g1 = false;
+            g2 = false;
+            g3 = false;
+            g4 = false;
 
             currentPlayerText.text = player2;
             if (currentSBP2 > 0)
@@ -222,6 +266,18 @@ public class Turns : MonoBehaviour
             itemBarG2.enabled = false;
             itemBarG3.enabled = true;
             itemBarG4.enabled = false;
+            sb1 = false;
+            sb2 = false;
+            sb3 = false;
+            sb4 = false;
+            vol1 = false;
+            vol2 = false;
+            vol3 = false;
+            vol4 = false; 
+            g1 = false;
+            g2 = false;
+            g3 = false;
+            g4 = false;
 
             currentPlayerText.text = player3;
             if (currentSBP3 > 0)
@@ -265,6 +321,18 @@ public class Turns : MonoBehaviour
             itemBarG2.enabled = false;
             itemBarG3.enabled = false;
             itemBarG4.enabled = true;
+            sb1 = false;
+            sb2 = false;
+            sb3 = false;
+            sb4 = false;
+            vol1 = false;
+            vol2 = false;
+            vol3 = false;
+            vol4 = false;
+            g1 = false;
+            g2 = false;
+            g3 = false;
+            g4 = false;
 
             currentPlayerText.text = player4;
             if (currentSBP4 > 0)
@@ -304,25 +372,7 @@ public class Turns : MonoBehaviour
             StartCoroutine(TurnDelay());
         }
 
-        if (ready == true) 
-        { 
-            stabReady -= Time.deltaTime;
-            if (stabReady <= 0f)
-            {
-                backStabEvent.winner = activePlayer.playerIndex;
-                itemBar.SetActive(false);
-                backStabEvent.start = true;
-                stabReady = 0.096f;
-                ready = false;
-                turnSwitch = true;
-                currentTurn++;
-                BuildSeatOrder();
-                if (currentTurn >= players.Count)
-                {
-                    currentTurn = 0;
-                }
-            }
-        }
+        
 
     }
 
@@ -447,10 +497,10 @@ public class Turns : MonoBehaviour
                     {
                         currentSBP4--;
                     }
-                    vol1 = false;
-                    vol2 = false;
-                    vol3 = false;
-                    vol4 = false;
+                    sb1 = false;
+                    sb2 = false;
+                    sb3 = false;
+                    sb4 = false;
                 }
                 else if (sb1 == false || sb2 == false || sb3 == false || sb4 == false)
                 {
@@ -488,10 +538,10 @@ public class Turns : MonoBehaviour
                     {
                         currentVOLP4--;
                     }
-                    sb1 = false;
-                    sb2 = false;
-                    sb3 = false;
-                    sb4 = false;
+                    vol1 = false;
+                    vol2 = false;
+                    vol3 = false;
+                    vol4 = false;
                 }
                 else if (vol1 == false || vol2 == false || vol3 == false || vol4 == false)
                 {

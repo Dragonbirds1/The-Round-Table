@@ -252,11 +252,11 @@ public class BackStabEvent : MonoBehaviour
         stabber = null;
     }
 
-    public void ForceStabber(PlayerInput player)
-    {
-        stabber = player;
-        Debug.Log("Forced stabber is Player " + player.playerIndex);
-    }
+    //public void ForceStabber(PlayerInput player)
+    //{
+       // stabber = player;
+       // Debug.Log("Forced stabber is Player " + player.playerIndex);
+    //}
 
     //------------------------------------------------
     // RESET EVENT

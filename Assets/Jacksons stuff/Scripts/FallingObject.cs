@@ -10,16 +10,13 @@ public class FallingObject : MonoBehaviour
         manager = FindFirstObjectByType<RockMinigameManager>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         PlayerInput player =
             collision.gameObject.GetComponent<PlayerInput>();
 
-        if (player != null)
-        {
             manager.PlayerHit(player);
 
             Destroy(gameObject);
-        }
     }
 }

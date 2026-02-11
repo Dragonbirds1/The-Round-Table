@@ -26,6 +26,16 @@ public class AssignPlayer : MonoBehaviour
 
         MainGameManager.Instance.RegisterPlayer(input);
 
+        FindFirstObjectByType<BackStabEvent>().players.Add(input);
+
+        FindFirstObjectByType<Teleport>().players.Add(input);
+
+        FindFirstObjectByType<RockMinigameManager>().alivePlayers.Add(input);
+
+        FindFirstObjectByType<RockMinigameManager>().players.Add(input);
+
+        
+
         //------------------------------------------------
         // OPTIONAL — Start turns once players join
         //------------------------------------------------
