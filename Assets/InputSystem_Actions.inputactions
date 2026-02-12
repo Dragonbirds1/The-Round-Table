@@ -82,7 +82,11 @@
                     "name": "Sprint",
                     "type": "Button",
                     "id": "641cd816-40e6-41b4-8c3d-04687c349290",
+<<<<<<< HEAD
                     "expectedControlType": "",
+=======
+                    "expectedControlType": "Button",
+>>>>>>> ee605a9d26b80a989476d6e7e0baaee3f9e6a519
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -473,6 +477,53 @@
                     "action": "Crouch",
                     "isComposite": false,
                     "isPartOfComposite": false
+<<<<<<< HEAD
+=======
+                },
+                {
+                    "name": "",
+                    "id": "c0f9b4af-79ab-4840-8c37-d86cedf5d76a",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Player1Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6081a450-4baa-4226-9620-32941cb3d96a",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad2",
+                    "action": "Player2Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c61352aa-3863-4f06-bbe5-7741f0827427",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad3",
+                    "action": "Player3Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "601fafe6-369f-4085-b246-2cc98af9aa66",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad4",
+                    "action": "Player4Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+>>>>>>> ee605a9d26b80a989476d6e7e0baaee3f9e6a519
                 }
             ]
         },

@@ -20,7 +20,24 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Sylva/Scenes/Testing Scenes/test3.unity
     guid: bd2719aa95a41884eb530b2f7701aec2
+  - enabled: 1
+    path: Assets/cristians foldr/Main cristian.unity
+    guid: cd41060409f9d31448a9001a91075285
+  - enabled: 1
+    path: Assets/cristians foldr/testing scene.unity
+    guid: 391d9e861dcb89145ba780ae5a459105
+  - enabled: 1
+    path: Assets/cristians foldr/testing scene 2.unity
+    guid: 53b38508d1981cf49818160cddb5931a
+  - enabled: 1
+    path: Assets/Jacksons stuff/Scenes/Rock falling.unity
+    guid: 163564a3f8f7ca7408ccdccc34c64f68
+  - enabled: 1
+    path: Assets/warrens stuff/Warren.unity
+    guid: 0bcddfc825b9cde44b595138839cefa7
+  - enabled: 1
+    path: Assets/warrens stuff/Tutorial.unity
+    guid: 63773571bd52fd24dbf81c8a345794d8
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 7667cd40305d4a54f8aa28688f428dd9, type: 2}
-    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
