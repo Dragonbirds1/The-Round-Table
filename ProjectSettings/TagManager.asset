@@ -3,12 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Object
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - IsPlayer
   - Water
   - UI
   - 
@@ -40,6 +41,12 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: TableCut
+    uniqueID: 3930869377
+    locked: 0
+  - name: Tabler
+    uniqueID: 3888542481
     locked: 0
   m_RenderingLayers:
   - Default

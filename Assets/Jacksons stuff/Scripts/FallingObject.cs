@@ -1,11 +1,22 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.InputSystem;
 
 public class FallingObject : MonoBehaviour
 {
+    private RockMinigameManager manager;
+
+    void Start()
+    {
+        manager = FindFirstObjectByType<RockMinigameManager>();
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Destroy(this.gameObject);
+        PlayerInput player =
+            collision.gameObject.GetComponent<PlayerInput>();
+
+            manager.PlayerHit(player);
+
+            Destroy(gameObject);
     }
 }

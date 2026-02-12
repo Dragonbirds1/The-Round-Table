@@ -11,6 +11,8 @@ public class BackStabEvent : MonoBehaviour
     public GameObject targetLight, blackoutLight;
     public GameObject wol;
 
+    public GameObject button1, button2, XB, YB, luckyPlayerTMP, playerTMP;
+
     [Header("UI")]
     public GameObject StabberText;
     public TextMeshProUGUI textMeshProUGUI;
@@ -26,6 +28,7 @@ public class BackStabEvent : MonoBehaviour
 
     [Header("Players")]
     public List<PlayerInput> players = new List<PlayerInput>();
+
 
     [Header("Impact FX")]
     public float hitStopTime = 0.08f;
@@ -76,6 +79,12 @@ public class BackStabEvent : MonoBehaviour
             music.PlayOneShot(lightsOut, 2);
             mainMusic1.enabled = false;
             mainMusic2.enabled = false;
+            button1.SetActive(false);
+            button2.SetActive(false);
+            XB.SetActive(false);
+            YB.SetActive(false);
+            luckyPlayerTMP.SetActive(false);
+            playerTMP.SetActive(false);
 
             start = false;
         }
@@ -165,6 +174,8 @@ public class BackStabEvent : MonoBehaviour
         {
             PlayerInput victim = GetTargetFromButton(pad);
 
+            FindFirstObjectByType<Turns>().EliminatePlayer(victim);
+
             if (victim != null)
             {
                 Debug.Log("PLAYER " + stabber.playerIndex +
@@ -252,6 +263,13 @@ public class BackStabEvent : MonoBehaviour
         stabber = null;
     }
 
+    public void ForceStabber(PlayerInput player)
+    {
+        stabber = player;
+        Debug.Log("Forced stabber is Player " + player.playerIndex);
+        start = true;
+    }
+
     //------------------------------------------------
     // RESET EVENT
     //------------------------------------------------
@@ -270,6 +288,13 @@ public class BackStabEvent : MonoBehaviour
         lampLight1.SetActive(true);
         lampLight2.SetActive(true);
         lampLight3.SetActive(true);
+
+        button1.SetActive(true);
+        button2.SetActive(true);
+        XB.SetActive(true);
+        YB.SetActive(true);
+        luckyPlayerTMP.SetActive(true);
+        playerTMP.SetActive(true);
 
         targetLight.SetActive(false);
         wol.SetActive(true);
