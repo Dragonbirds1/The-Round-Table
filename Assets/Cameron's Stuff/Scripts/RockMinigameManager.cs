@@ -14,7 +14,15 @@ public class RockMinigameManager : MonoBehaviour
     [Header("Wheel")]
     public Wheel wheel;
 
-    public GameObject backgroundCh, groundCh, ChCam, NCam;
+    [Header("Turns")]
+    public Turns turns;
+
+    [Header("RockFall")]
+    public ObjectFallController fall;
+
+    public GameObject backgroundCh, groundCh, ChCam, NCam, abc1, abc2;
+
+    private bool winnerDeclared = false;
 
     //------------------------------------------------
 
@@ -22,13 +30,19 @@ public class RockMinigameManager : MonoBehaviour
     {
         // Copy players into alive list
         alivePlayers = new List<PlayerInput>(players);
+        winnerDeclared = false;
     }
 
     //------------------------------------------------
 
     public void BeginMinigame()
     {
+        players = MainGameManager.Instance.players;
+
         alivePlayers = new List<PlayerInput>(players);
+
+        Debug.Log("MINIGAME STARTED WITH " + alivePlayers.Count + " PLAYERS");
+        Debug.Log(players.Count);
 
         foreach (var p in alivePlayers)
             p.gameObject.SetActive(true);
@@ -36,51 +50,85 @@ public class RockMinigameManager : MonoBehaviour
 
     public void PlayerHit(PlayerInput player)
     {
+        if (winnerDeclared)
+            return;
+
         if (!alivePlayers.Contains(player))
             return;
 
         Debug.Log("Player " + player.playerIndex + " is OUT!");
 
         alivePlayers.Remove(player);
+        EliminatePlayer(player);
 
-        //------------------------------------------------
-        // Disable the player
-        //------------------------------------------------
-
-        player.gameObject.SetActive(false);
-
-        //------------------------------------------------
-        // Check winner
-        //------------------------------------------------
-
-        if (alivePlayers.Count == 1)
+        if (alivePlayers.Count <= 1)
         {
+            winnerDeclared = true;
 
-            DeclareWinner(alivePlayers[0]);
+            if (alivePlayers.Count == 1)
+                DeclareWinner(alivePlayers[0]);
+            else
+                Debug.Log("Nobody survived!");
         }
+    }
+
+    void EliminatePlayer(PlayerInput player)
+    {
+        player.DeactivateInput();
+
+        player.GetComponent<Collider2D>().enabled = false;
+
+        // Optional visual
+        player.GetComponent<SpriteRenderer>().color = Color.gray;
     }
 
     //------------------------------------------------
 
     void DeclareWinner(PlayerInput winner)
     {
+        foreach (var p in players)
+        {
+            Debug.Log("Player seat loop index: " + players.IndexOf(p));
+            Debug.Log("Actual PlayerIndex: " + p.playerIndex);
+        }
+
         Debug.Log("PLAYER " + winner.playerIndex + " WINS!");
 
         //------------------------------------------------
         // Teleport everyone back
         //------------------------------------------------
 
+        backgroundCh.SetActive(false);
+        groundCh.SetActive(false);
+        ChCam.SetActive(false);
+        NCam.SetActive(true);
+        fall.barrier.SetActive(true);
+        abc1.SetActive(true);
+        abc2.SetActive(true);
+
         for (int i = 0; i < players.Count; i++)
         {
-            players[i].gameObject.SetActive(true);
+            if (i >= originalPositions.Length)
+            {
+                Debug.LogError("Missing spawn point for seat " + i);
+                return;
+            }
 
-            backgroundCh.SetActive(false);
-            groundCh.SetActive(false);
-            ChCam.SetActive(false);
-            NCam.SetActive(true);
+            PlayerInput p = players[i];
 
-            players[i].transform.position =
-                originalPositions[players[i].playerIndex].position;
+            Rigidbody2D rb = p.GetComponent<Rigidbody2D>();
+
+            if (rb != null)
+            {
+                rb.linearVelocity = Vector2.zero;
+                rb.angularVelocity = 0f;
+            }
+
+            p.DeactivateInput();
+            p.GetComponent<Collider2D>().enabled = true;
+            p.GetComponent<SpriteRenderer>().color = Color.white;
+            p.transform.position =
+                originalPositions[i].position;
         }
 
         //------------------------------------------------

@@ -16,6 +16,7 @@ public class Teleport : MonoBehaviour
     [Header("Trigger")]
     public bool teleportNow = false;
 
+
     void Update()
     {
         if (!teleportNow)

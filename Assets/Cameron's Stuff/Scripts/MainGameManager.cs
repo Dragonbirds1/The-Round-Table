@@ -21,6 +21,10 @@ public class MainGameManager : MonoBehaviour
     public Turns turns;
     public RockMinigameManager minigame;
 
+    Dictionary<PlayerInput, int> playerSeats =
+    new Dictionary<PlayerInput, int>();
+
+
     //------------------------------------------------
     // STATE MACHINE
     //------------------------------------------------
@@ -71,32 +75,32 @@ public class MainGameManager : MonoBehaviour
         switch (state)
         {
             case GameState.WaitingForPlayers:
-                DisableAllInput();
+                //DisableAllInput();
                 break;
 
             case GameState.Turns:
-                EnableAllInput();
+                //DisableAllInput();
                 turns.players = players;
                 turns.BeginTurns();
                 break;
 
             case GameState.Event:
-                DisableAllInput();
+                //DisableAllInput();
                 break;
 
             case GameState.Minigame:
-                DisableAllInput();
+                //DisableAllInput();
                 teleport.TeleportAllPlayers();
                 minigame.players = players;
                 minigame.BeginMinigame();
                 break;
 
             case GameState.Wheel:
-                EnableAllInput();
+                //EnableAllInput();
                 break;
 
             case GameState.Transition:
-                DisableAllInput();
+                //DisableAllInput();
                 break;
         }
     }
@@ -119,8 +123,17 @@ public class MainGameManager : MonoBehaviour
 
     public void RegisterPlayer(PlayerInput player)
     {
-        if (!players.Contains(player))
-            players.Add(player);
+        if (players.Contains(player))
+            return;
+
+        int seat = players.Count;
+        playerSeats[player] = seat;
+
+        players.Add(player);
+
+        Debug.Log("Player Registered: " + player.playerIndex);
+        Debug.Log(FindObjectsByType<PlayerInput>(FindObjectsSortMode.None).Length);
+
     }
 
     //------------------------------------------------
@@ -131,7 +144,7 @@ public class MainGameManager : MonoBehaviour
     {
         ChangeState(GameState.Transition);
 
-        teleport.TeleportAllPlayers();
+        //teleport.TeleportAllPlayers();
 
         ChangeState(GameState.Wheel);
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class Turns : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class Turns : MonoBehaviour
     public Teleport teleport;
 
     public List<PlayerInput> players = new List<PlayerInput>();
+
+    public List<PlayerInput> alivePlayers = new List<PlayerInput>();
 
     private HashSet<int> skippedPlayers = new HashSet<int>();
 
@@ -37,6 +40,10 @@ public class Turns : MonoBehaviour
 
     public GameObject itemBar;
 
+    public GameObject abc1, abc2;
+
+    public ObjectFallController fall;
+
     public TextMeshProUGUI currentPlayerText;
     public TextMeshProUGUI gogglesDisplay;
     public TextMeshProUGUI itemBarSB1, itemBarSB2, itemBarSB3, itemBarSB4;
@@ -54,6 +61,8 @@ public class Turns : MonoBehaviour
 
     public float startSwap = 2f;
 
+    public bool miniGame = false;
+
     public string player1, player2, player3, player4, view1, view2, view3, view4;
 
     private bool choosingSkipTarget = false;
@@ -64,6 +73,7 @@ public class Turns : MonoBehaviour
 
     private void Start()
     {
+        alivePlayers = new List<PlayerInput>(players);
         itemBar.SetActive(false);
         turnSwitch = false;
         item = false;
@@ -133,6 +143,7 @@ public class Turns : MonoBehaviour
                 ChCam.SetActive(true);
                 NCam.SetActive(false);
                 teleport.teleportNow = true;
+                miniGame = true;
             }
         }
 
@@ -363,17 +374,68 @@ public class Turns : MonoBehaviour
             }
         }
 
-        if (Pressed(activePlayer) && turnSwitch == true && backStabEvent.stabbing == false)
+        if (miniGame == false)
         {
-            turnSwitch = false;
+            if (Pressed(activePlayer) && turnSwitch == true && backStabEvent.stabbing == false)
+            {
+                turnSwitch = false;
+                Debug.Log("Player " + activePlayer.playerIndex + " took their turn!");
 
-            Debug.Log("Player " + activePlayer.playerIndex + " took their turn!");
-
-            StartCoroutine(TurnDelay());
+                StartCoroutine(TurnDelay());
+            }
         }
-
         
 
+    }
+
+    public void EliminatePlayer(PlayerInput player)
+    {
+        if (!alivePlayers.Contains(player))
+            return;
+
+        int removedIndex = alivePlayers.IndexOf(player);
+
+        Debug.Log("PLAYER " + player.playerIndex + " ELIMINATED");
+
+        alivePlayers.RemoveAt(removedIndex);
+
+        player.gameObject.SetActive(false);
+
+        //----------------------------------------
+        // FIX CURRENT TURN
+        //----------------------------------------
+
+        if (removedIndex < currentTurn)
+        {
+            currentTurn--;
+        }
+
+        if (currentTurn >= alivePlayers.Count)
+        {
+            currentTurn = 0;
+        }
+
+        //----------------------------------------
+        // CHECK WINNER
+        //----------------------------------------
+
+        if (alivePlayers.Count == 1)
+        {
+            DeclareWinner(alivePlayers[0]);
+        }
+    }
+
+    void DeclareWinner(PlayerInput winner)
+    {
+        Debug.Log("PLAYER " + winner.playerIndex + " WINS THE GAME!");
+
+        // Stop turns
+        enabled = false;
+
+        // TODO:
+        // Trigger victory screen
+        // Play music
+        // Load results
     }
 
     void BuildSeatOrder()
@@ -461,6 +523,8 @@ public class Turns : MonoBehaviour
                 light1.SetActive(false);
                 light2.SetActive(false);
                 light3.SetActive(false);
+                abc1.SetActive(false);
+                abc2.SetActive(false);
                 loadingAnim.SetBool("Swap", true);
                 toggleSwap = true;
                 turnSwitch = true;
