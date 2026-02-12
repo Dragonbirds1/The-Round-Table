@@ -23,17 +23,17 @@ public class PauseManager : MonoBehaviour
         if (paused)
         {
             pauseMenu.SetActive(true);
-        }
+        }   
+    }
 
-        if (paused == true && Input.GetKeyDown(resumeKey))
-        {
-            pauseMenu.SetActive(false);
-            paused = false;
-        }
+    public void Quit()
+    {
+        SceneManager.LoadScene("Warren");
+    }
 
-        if (paused == true && Input.GetKeyDown(quitKey))
-        {
-            SceneManager.LoadScene("Warren");
-        }
+    public void Resume()
+    {
+        pauseMenu.SetActive(false);
+        paused = false;
     }
 }
